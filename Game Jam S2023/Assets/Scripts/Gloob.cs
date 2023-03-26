@@ -66,6 +66,11 @@ public class Gloob : MonoBehaviour
         }
         return false;
     }
+
+    public void carrying(bool c)
+    {
+        animator.SetBool("Carrying", c);
+    }
     
 
     public Gloob[] Split()

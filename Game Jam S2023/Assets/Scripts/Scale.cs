@@ -36,6 +36,9 @@ public class Scale : MonoBehaviour
                 b.transform.position = this.transform.position;
                 b.transform.parent = this.transform;
                 placedWeight += b.weight;
+                Gloob gg = o.GetComponent<Gloob>();
+                if (gg != null)
+                    gg.carrying(false);
             }
         }
         Gloob g = o.GetComponent<Gloob>();

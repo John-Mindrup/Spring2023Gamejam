@@ -1865,7 +1865,7 @@ MonoBehaviour:
   fire: {fileID: 11400000, guid: 7cfeae1568c9eaf4b9deaf461c552581, type: 2}
   obstacles: {fileID: 776287432}
   gateCords: {x: 11, y: 6, z: 0}
-  locks: 1
+  locks: 2
 --- !u!4 &1030085706
 Transform:
   m_ObjectHideFlags: 0
