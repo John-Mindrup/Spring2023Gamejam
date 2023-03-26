@@ -25,7 +25,12 @@ public class MusicPlayer : MonoBehaviour
 
     public static void setVolume()
     {
-        Instance.audioSource.volume = Instance.slider.value;
+        Slider s = GameObject.Find("VolumeSlider").GetComponent<Slider>();
+        if (s != null)
+        {
+            Instance.audioSource.volume = s.value;
+        }
+        
     }
 
     // Update is called once per frame

@@ -12,17 +12,17 @@ public class SceneController : MonoBehaviour
     {
         if (Instance == null)
         {
-
             Instance = this;
+            ChangeScene("Main Menu");
         }
     }
 
-    public void ChangeScene(string name)
+    public static void ChangeScene(string name)
     {
-        StartCoroutine(LoadYourAsyncScene(name, this.gameObject));
+       Instance.StartCoroutine(LoadYourAsyncScene(name, Instance.gameObject));
     }
 
-    IEnumerator LoadYourAsyncScene(string m_Scene, GameObject m_MyGameObject)
+    static IEnumerator LoadYourAsyncScene(string m_Scene, GameObject m_MyGameObject)
     {
         // Set the current Scene to be able to unload it later
         Scene currentScene = SceneManager.GetActiveScene();
@@ -35,7 +35,6 @@ public class SceneController : MonoBehaviour
         {
             yield return null;
         }
-
         // Move the GameObject (you attach this in the Inspector) to the newly loaded Scene
         SceneManager.MoveGameObjectToScene(m_MyGameObject, SceneManager.GetSceneByName(m_Scene));
         // Unload the previous Scene

@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.InputSystem;
+
 public class MenuButton : MonoBehaviour
 {
+    public string SceneName;
     // Start is called before the first frame update
     void Start()
     {
@@ -11,8 +14,8 @@ public class MenuButton : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        Vector3 mousePos = Mouse.current.position.ReadValue();
     }
 }
