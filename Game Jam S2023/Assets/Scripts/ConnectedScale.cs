@@ -34,6 +34,7 @@ public class ConnectedScale : MonoBehaviour
                 sr.sprite = depressed;
                 activated = true;
                 otherScale.activated = true;
+                otherScale.sr.sprite = depressed;
                 SceneStats.Instance.locks--;
             }
 
