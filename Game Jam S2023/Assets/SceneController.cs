@@ -17,9 +17,16 @@ public class SceneController : MonoBehaviour
         }
     }
 
+    public static void NextLevel()
+    {
+        
+    }
+
     public static void ChangeScene(string name)
     {
-       Instance.StartCoroutine(LoadYourAsyncScene(name, Instance.gameObject));
+        if(PlayerInput.Instance != null)
+        PlayerInput.Instance.currentlySelecting = false;
+        Instance.StartCoroutine(LoadYourAsyncScene(name, Instance.gameObject));
     }
 
     static IEnumerator LoadYourAsyncScene(string m_Scene, GameObject m_MyGameObject)

@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerInput : MonoBehaviour
 {
     List<Gloob> gloobList;
-    private bool currentlySelecting = false;
+    public bool currentlySelecting = false;
     private Vector2 startClick;
     private Vector2 endClick;
     public GameObject superGloob;
@@ -18,6 +19,7 @@ public class PlayerInput : MonoBehaviour
     void Start()
     {
         gloobList = new List<Gloob>();
+        if(Instance == null)
         Instance = this;
     }
 
@@ -70,6 +72,33 @@ public class PlayerInput : MonoBehaviour
         {
             currentlySelecting=true;
             startClick = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        }
+    }
+
+    void levelEnd()
+    {
+        gloobList.Clear();
+        currentlySelecting = false;
+        string currentScene = SceneManager.GetActiveScene().name;
+        if (currentScene.Equals("Level 1"))
+        {
+            SceneController.ChangeScene("Level 2");
+        }
+        else if (currentScene.Equals("Level 2"))
+        {
+            SceneController.ChangeScene("Level 3");
+        }
+        else if (currentScene.Equals("Level 3"))
+        {
+            SceneController.ChangeScene("Level 4");
+        }
+        else if (currentScene.Equals("Level 4"))
+        {
+            SceneController.ChangeScene("Level 5");
+        }
+        else
+        {
+            SceneController.ChangeScene("Main Menu");
         }
     }
 
@@ -126,6 +155,8 @@ public class PlayerInput : MonoBehaviour
                 //win
                 Instantiate(superGloob, (Vector2)pos, Quaternion.identity);
                 w -= 16;
+                levelEnd();
+                
             }
             if (w >= 8)
             {
